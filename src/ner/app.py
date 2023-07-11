@@ -4,7 +4,6 @@ from nemo.collections.nlp.models import TokenClassificationModel
 
 app = Flask(__name__)
 model = TokenClassificationModel.from_pretrained("ner_en_bert")
-model.cfg['dataset']['num_workers'] = 1
     
 
 @app.post('/ner')
