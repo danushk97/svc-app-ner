@@ -1,0 +1,3 @@
+Flask
+Cython==0.29.34
+nemo-toolkit[all]==1.18.0
