@@ -4,7 +4,8 @@ from nemo.collections.nlp.models import TokenClassificationModel
 
 app = Flask(__name__)
 model = TokenClassificationModel.from_pretrained("ner_en_bert")
-    
+# model.cfg['dataset']['num_workers'] = 0
+
 
 @app.post('/ner')
 def ner():
@@ -12,14 +13,8 @@ def ner():
     result = model.add_predictions(body['inputs'])
 
     return {
-        'data': result,
-        'status': 'success'
+        'entities': result
     }
-
-
-@app.get('/test/<int:value>')
-def test_endpoint(value):
-    return str(value)
 
 
 if __name__ == '__main__':
